@@ -1,0 +1,34 @@
+<!-- quote-detail.component.html -->
+<div class="quote-detail-container">
+    
+    <div class="quote-detail">
+      <img [src]="getImageSource(data.QuoteType)" alt="Quote Image" class="quote-image"/>
+      <div class="quote-info">
+        <div class="quote-field">
+          <label>Quote ID:</label>
+          <span>{{ data.QuoteID }}</span>
+        </div>
+        <div class="quote-field">
+          <label>Quote Type:</label>
+          <span>{{ data.QuoteType }}</span>
+        </div>
+        <div class="quote-field">
+          <label>Sales Person:</label>
+          <span>{{ data.Sales }}</span>
+        </div>
+        <div class="quote-field">
+          <label>Premium Amount:</label>
+          <span>{{ data.Premium }}</span>
+        </div>
+        <div class="quote-field">
+          <label>Due Date:</label>
+          <span>{{ data.DueDate | date }}</span>
+        </div>
+        <div class="quote-field">
+          <label>Description:</label>
+          <span>{{ data.Description }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  

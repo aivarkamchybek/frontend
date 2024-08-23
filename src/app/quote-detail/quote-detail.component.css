@@ -1,0 +1,56 @@
+.quote-detail-container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 90px 50px;
+  margin-left: 30%;
+  font-size: large;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.header-link, .log-out {
+  font-size: 16px;
+  color: #4a90e2;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.log-out {
+  float: right;
+}
+
+.quote-detail {
+  align-items: center;
+}
+
+.quote-image {
+  width: 250px;
+  height: auto;
+  margin-bottom: 20px; 
+  font-size: large;
+}
+
+.quote-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quote-field {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 10px;
+  color:blue
+}
+
+span {
+  color: #666;
+}

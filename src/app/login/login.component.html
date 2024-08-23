@@ -1,0 +1,30 @@
+<div class="auth-container">
+  <div class="tab-header">
+    <div class="tab-item" [class.active]="isLogin" (click)="toggleTab(true)">Login</div>
+    <div class="tab-item" [class.active]="!isLogin" (click)="toggleTab(false)">Register</div>
+  </div>
+
+  <div *ngIf="isLogin" class="tab-content">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <input id="EmailOrUsername" formControlName="EmailOrUsername" placeholder="Email or Username" />
+        <div *ngIf="loginForm.get('EmailOrUsername')?.invalid && loginForm.get('EmailOrUsername')?.touched" class="error">
+          Email or Username is required
+        </div>
+      </div>
+
+      <div class="form-field">
+        <input id="Password" type="password" formControlName="Password" placeholder="Password" />
+        <div *ngIf="loginForm.get('Password')?.invalid && loginForm.get('Password')?.touched" class="error">
+          Password is required
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="btn-primary">Login</button>
+    </form>
+  </div>
+
+  <div *ngIf="!isLogin" class="tab-content">
+    <app-sing-up></app-sing-up>
+  </div>
+</div>

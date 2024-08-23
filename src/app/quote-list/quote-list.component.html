@@ -1,0 +1,154 @@
+<div class="header-sign-out">
+  <h2  style="color: #2b46e2;">Task Management System</h2>
+  <button style="background-color: rgb(255, 255, 255); font-weight: bold; font-size: 19px; border: none; color: #2b46e2;" (click)="signOut()">Log Out</button>
+
+
+
+
+</div>
+
+<div class="task-details">
+  <h3>Task Details</h3>
+  <button class="square-button" (click)="openAddQuoteDialog()">
+    Add Task
+    <div class="line-3"></div> <!-- Add this div to ensure the third line is present -->
+  </button>
+</div>
+<div class="container">
+  <div class="header">
+    <div class="items-per-page">
+      <label for="itemsPerPage">Show</label>
+      <select id="itemsPerPage" (change)="updateItemsPerPage($event)">
+        <option *ngFor="let option of itemsPerPageOptions" [value]="option">{{ option }}</option>
+      </select>
+      <label for="itemsPerPage">Entries</label>
+    </div>
+  </div>
+
+  <div class="search-sort">
+    <span class="sort-label">Order By:</span> 
+    <button mat-button class="custom-button" [matMenuTriggerFor]="menu"> 
+      <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
+      {{ currentSort.field }} 
+
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="sortBy('QuoteID')">QuoteID</button>
+      <button mat-menu-item (click)="sortBy('QuoteType')">QuoteType</button>
+      <button mat-menu-item (click)="sortBy('Description')">Description</button>
+      <button mat-menu-item (click)="sortBy('DueDate')">DueDate</button>
+      <button mat-menu-item (click)="sortBy('Premium')">Premium</button>
+      <button mat-menu-item (click)="sortBy('Sales')">Sales</button>
+    </mat-menu>
+    
+    <mat-checkbox [(ngModel)]="descending">Descending</mat-checkbox>
+    
+
+  
+
+
+    <div class="search-button">
+      <label for="searchID" class="search-label">Search</label>
+      <input
+        id="searchID"
+        type="number"
+        [(ngModel)]="searchID"
+        (ngModelChange)="searchID != null ? searchById(searchID) : loadQuotes()"
+        placeholder="Enter Quote ID"
+        class="search-input"
+      />
+    </div>
+  </div>
+
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+
+
+
+
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    
+   
+    <ng-container matColumnDef="QuoteID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No </th>
+      <td mat-cell *matCellDef="let quote"> {{quote.QuoteID}} </td>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="QuoteType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> QuoteType </th>
+      <td mat-cell *matCellDef="let quote"> {{quote.QuoteType}} </td>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+      <td mat-cell *matCellDef="let quote"> {{quote.Description}} </td>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="DueDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DueDate </th>
+      <td mat-cell *matCellDef="let quote"> {{quote.DueDate | date}} </td>
+    </ng-container>
+
+ 
+    <ng-container matColumnDef="Premium">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Premium </th>
+      <td mat-cell *matCellDef="let quote"> {{quote.Premium | currency}} </td>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="Sales">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Sales </th>
+      <td mat-cell *matCellDef="let quote"> {{quote.Sales | currency}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions</th>
+      <td mat-cell *matCellDef="let quote">
+
+        <button mat-icon-button (click)="openQuoteDetail(quote)" aria-label="View Details" aria-label="View Details" matTooltip="View Details">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button (click)="openEditListDialog(quote)" aria-label="Edit" matTooltip="Edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="delete(quote.QuoteID)" aria-label="Delete" matTooltip="Delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    
+
+    <!-- Header and Row Definitions -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+  </table>
+
+  <div class="pagination">
+    <div class="page-info">
+      {{ getPageRange() }}
+    </div>
+    <button class="pagination-button" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <!-- Add page numbers here -->
+    <div class="page-numbers">
+      <button *ngFor="let page of generatePageNumbers()"
+              class="pagination-button"
+              (click)="currentPage = page; updatePagination()"
+              [class.active]="page === currentPage">
+        {{ page }}
+      </button>
+    </div>
+    <!-- End page numbers -->
+    <button class="pagination-button" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= totalRecords">Next</button>
+  </div>
+</div>

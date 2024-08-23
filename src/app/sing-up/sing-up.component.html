@@ -1,0 +1,42 @@
+<body>
+  <div class="parent-container">
+
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div class="form-field">
+    <input matInput id="username" formControlName="username" (blur)="checkUsernameExists()" placeholder="Username">
+    <mat-error *ngIf="signupForm.get('username')?.hasError('required') && signupForm.get('username')?.touched">
+      Username is required
+    </mat-error>
+    <mat-error *ngIf="signupForm.get('username')?.hasError('usernameExists') && signupForm.get('username')?.touched">
+      Username already exists
+    </mat-error>
+  </div>
+  <div class="form-field">
+    <input matInput id="email" formControlName="email" (blur)="checkEmailExists()" placeholder="Email">
+    <mat-error *ngIf="signupForm.get('email')?.hasError('required') && signupForm.get('email')?.touched">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="signupForm.get('email')?.hasError('email') && signupForm.get('email')?.touched">
+      Enter a valid email
+    </mat-error>
+    <mat-error *ngIf="signupForm.get('email')?.hasError('emailExists') && signupForm.get('email')?.touched">
+      Email already exists
+    </mat-error>
+
+</div>
+  <div class="form-field">
+    <input matInput id="password" type="password" formControlName="password"  placeholder="Password">
+    <mat-error *ngIf="signupForm.get('password')?.hasError('required') && signupForm.get('password')?.touched">
+      Password is required
+    </mat-error>
+
+</div>
+  <div class="form-field">
+    <input matInput id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+    <mat-error *ngIf="signupForm.hasError('passwordMismatch')">Passwords do not match</mat-error>
+
+</div>
+  <button type="submit" [disabled]="signupForm.invalid"  class="btn-primary">Sign Up</button>
+</form>
+</div>
+</body>

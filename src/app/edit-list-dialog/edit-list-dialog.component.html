@@ -1,0 +1,62 @@
+<h1 mat-dialog-title class="title">Update</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="quote-form">
+
+    <div class="form-group">
+      <label for="quoteID" class="form-label">Quote ID</label>
+      <mat-form-field class="full-width">
+        <input matInput id="quoteID" formControlName="QuoteID" placeholder="Enter Quote ID" readonly>
+      </mat-form-field>
+    </div>
+    
+    <div class="form-group">
+      <label for="quoteType" class="form-label">Quote Type</label>
+      <mat-form-field class="full-width">
+        <mat-select formControlName="QuoteType">
+          <mat-option *ngFor="let type of quoteTypes" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <label for="Description" class="form-label">Description</label>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="Description">
+      </mat-form-field>
+    </div>
+
+    <div class="form-group row">
+      <label for="dueDate" class="form-label">Due Date</label>
+      <mat-form-field class="half-width">
+        <input matInput [matDatepicker]="picker" formControlName="DueDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field class="half-width">
+        <input matInput type="time" formControlName="DueDate">
+      </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <label for="premium" class="form-label">Premium</label>
+        <mat-form-field class="full-width">
+          <input matInput formControlName="Premium">
+        </mat-form-field>
+      </div>
+
+    <div class="form-group">
+      <label for="sales" class="form-label">Sales</label>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="Sales">
+      </mat-form-field>
+    </div>
+
+  </form>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="onSave()">Save</button>
+</div>

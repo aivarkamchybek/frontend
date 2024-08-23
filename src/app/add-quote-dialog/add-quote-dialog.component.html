@@ -1,0 +1,85 @@
+<h1 mat-dialog-title class="title">Add New Quote</h1>
+<div mat-dialog-content>
+<form [formGroup]="quoteForm" (ngSubmit)="addQuote()">
+
+  <div class="form-group">
+    <label for="quoteID" class="form-label">Quote ID</label>
+    <mat-form-field class="full-width">
+    <input matInput placeholder="Quote ID" formControlName="QuoteID">
+    <mat-error *ngIf="quoteForm.get('QuoteID')?.hasError('required')">
+      Quote ID is required.
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-group">
+  <label for="quoteType" class="form-label">Quote Type</label>
+  <mat-form-field class="full-width">
+    <mat-select formControlName="QuoteType">
+      <mat-option *ngFor="let type of quoteTypes" [value]="type">
+        {{type}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="quoteForm.get('QuoteType')?.hasError('required')">
+      Quote Type is required.
+    </mat-error>
+  </mat-form-field>
+</div>
+
+  <div class="form-group">
+    <label for="Description" class="form-label">Description</label>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="Description">
+    <mat-error *ngIf="quoteForm.get('Description')?.hasError('required')">
+      Description is required.
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-group row">
+  <label for="dueDate" class="form-label">Due Date</label>
+  <mat-form-field class="half-width">
+    <input matInput [matDatepicker]="picker" formControlName="DueDate">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="quoteForm.get('DueDate')?.hasError('required')">
+      Due Date is required.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="half-width">
+    <input matInput type="time" formControlName="DueDate">
+    <mat-error *ngIf="quoteForm.get('DueDate')?.hasError('required')">
+      Due Time is required.
+    </mat-error>
+  </mat-form-field>
+</div>
+
+  <div class="form-group">
+    <label for="premium" class="form-label">Premium</label>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="Premium">
+    <mat-error *ngIf="quoteForm.get('Premium')?.hasError('required')">
+      Premium is required.
+    </mat-error>
+    <mat-error *ngIf="quoteForm.get('Premium')?.hasError('min')">
+      Premium must be a positive number.
+    </mat-error>
+  </mat-form-field>
+</div>
+
+  <div class="form-group">
+    <label for="sales" class="form-label">Sales</label>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="Sales">
+    <mat-error *ngIf="quoteForm.get('Sales')?.hasError('required')">
+      Sales is required.
+    </mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button type="submit" [disabled]="quoteForm.invalid" (click)="addQuote()">Add Quote</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>
+</form>
+</div>

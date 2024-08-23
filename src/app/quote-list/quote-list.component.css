@@ -1,0 +1,147 @@
+/* Overall container style */
+
+.task-details {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 1px;
+  max-width: 80%;
+  border: 1px solid rgb(177, 177, 177);
+  background-color: rgb(184, 181, 181);
+  color: blue;
+  margin-top: 2%;
+  font-weight: bold;
+}
+
+.task-details h3 {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  line-height: 1.2; /* Adjusted line height for readability */
+}
+
+.container {
+  margin: 0 auto;
+  padding: 1px;
+  max-width: 80%;
+  border: 1px solid rgb(177, 177, 177);
+}
+
+mat-icon {
+  color: #959596;
+}
+
+.square-button {
+  background-color: #40cc7a;
+  color: white;
+  padding: 1px;
+  border: 1px ;
+  overflow: hidden;
+  padding-left: 40px; /* Adjusted padding */
+  margin-top: 0; /* Adjusted margin */
+  transform: translateX(0); /* Adjusted transform */
+}
+
+.square-button::before,
+.square-button::after,
+.square-button .line-3 {
+  content: '';
+  position: absolute;
+  width: 25%;
+  height: 2px;
+  background: white;
+  z-index: 1;
+}
+
+.square-button::before {
+  top: 20%;
+  left: 10%;
+}
+
+.square-button::after {
+  top: 42.5%;
+  left: 10%;
+}
+
+.square-button .line-3 {
+  top: 70%;
+  left: 10%;
+}
+
+.header-sign-out {
+  display: flex;
+  margin: 20px auto 0;
+  justify-content: space-between;
+  max-width: 81.5%;
+  height: 2px;
+}
+
+.search-sort {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-right: 90px;
+  height: 35px;
+  align-items: center;
+}
+
+.search-sort mat-menu {
+  margin-right: 10px;
+}
+
+.search-button input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  height: auto;
+}
+
+.search-label {
+  margin-right: 10px;
+}
+
+.custom-button {
+  background-color: transparent;
+  box-shadow: none;
+  border: 1px solid #000000;
+  color: #030303;
+  height: 25px;
+}
+
+.arrow-icon {
+  color: black;
+  font-size: 16px;
+}
+
+.sort-label {
+  margin-right: -15px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.page-info {
+  margin-right: auto;
+  font-size: 14px;
+}
+
+.pagination-button {
+  margin-left: 5px;
+  padding: 5px; /* Adjusted padding */
+  background-color: transparent;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.pagination-button:disabled {
+  cursor: not-allowed;
+}
+
+.pagination-button.active {
+  background-color: #bfbfc0;
+}

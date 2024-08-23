@@ -1,0 +1,49 @@
+/* .container {
+    max-width: 800px; 
+    margin: 0 auto; 
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .full-width{
+    width: 100%; 
+    padding: 10px; 
+    box-sizing: border-box;
+    
+} */
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: none; /* Remove all borders */
+  border-bottom: 1px solid #ddd; /* Add only the bottom border */
+  border-radius: 0; /* Remove the border-radius */
+}
+
+.btn-primary {
+  width: auto; /* Make the button width auto instead of 100% */
+  padding: 10px 20px; /* Adjust padding if needed */
+  background-color: #001380;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 0; /* Align the button to the left */
+}
+
+.btn-primary:disabled {
+  background-color: #999;
+}

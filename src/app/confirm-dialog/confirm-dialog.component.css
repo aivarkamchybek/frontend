@@ -1,0 +1,18 @@
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end; /* Aligns buttons to the right */
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .yes-button {
+    background-color: #6200ea; /* Purple color */
+    color: white; /* White text color */
+  }
+  
+
+  
+  /* Optional: Add hover and active states */
+  .yes-button:hover, .no-button:hover {
+    opacity: 0.8;
+  }
+  
